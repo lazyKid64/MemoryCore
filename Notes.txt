@@ -1,0 +1,19 @@
+mern-project/
+├── frontend/                     # React application
+│   ├── public/            # Static assets (favicon, index.html)
+│   └── src/
+│       ├── components/    # Reusable UI parts (Buttons, Navbars)
+│       ├── pages/         # Full page views (Home, Dashboard)
+│       ├── hooks/         # Custom React hooks
+│       ├── services/      # API call logic (Axios/Fetch)
+│       └── App.js         # Main entry and routing
+├── backend/                      # Express application
+│   ├── config/            # DB connection & environment variables
+│   ├── controllers/       # Logic for handling requests
+│   ├── models/            # Mongoose schemas (User, Product)
+│   ├── routes/            # API endpoint definitions
+│   ├── middleware/        # Auth checks & error handling
+│   └── server.js           # Server entry point
+├── .env                   # Secret keys (not tracked by Git)
+├── .gitignore             # Files to ignore (node_modules, .env)
+└── README.md
