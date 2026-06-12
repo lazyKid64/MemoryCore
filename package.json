@@ -7,9 +7,6 @@
     "install-frontend": "npm install --include=dev --prefix frontend",
     "build-frontend": "npm run build --prefix frontend",
     "build": "npm run install-backend && npm run install-frontend && npm run build-frontend",
-    "start": "cross-env NODE_ENV=production node backend/server.js"
-  },
-  "dependencies": {
-    "cross-env": "^7.0.3"
+    "start": "node backend/server.js"
   }
 }
