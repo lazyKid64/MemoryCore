@@ -2,6 +2,8 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 
 import notesRouter from "./routes/notesRoutes.js";
 import { connectDB } from "./config/db.js";
@@ -24,6 +26,18 @@ app.use(rateLimiter); // Apply rate limiter to all routes
 // routes
 app.use("/api/auth", authRoutes);
 app.use("/api/notes", verifyToken, notesRouter);
+
+// Serve frontend static files in production
+if (process.env.NODE_ENV === "production") {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  const frontendPath = path.join(__dirname, "../frontend/dist");
+  app.use(express.static(frontendPath));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(frontendPath, "index.html"));
+  });
+}
 
 const PORT = process.env.PORT || 5001;
 
